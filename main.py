@@ -1,16 +1,19 @@
-# This is a sample Python script.
+import streamlit as st
+from PIL import Image, ImageDraw, ImageFont
 
-# Press Maj+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+st.text_input("Your name", key="name")
+st.session_state.name
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+st.header("Generate ASCII images using GAN")
+st.write("Choose any image and get corresponding ASCII art:")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+uploaded_file = st.file_uploader("Choose an image...")
+
+if uploaded_file is not None:
+    # src_image = load_image(uploaded_file)
+    image = Image.open(uploaded_file)
+
+    st.image(uploaded_file, caption='Input Image', use_column_width=True)
+
+
